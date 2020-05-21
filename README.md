@@ -1,5 +1,26 @@
 # Example Express MVC
 
+## Guide
+
+### Installation
+
+```sh
+yarn
+```
+
+Then edit the `.env` file.
+
+```
+PORT=
+MONGODB_URI=
+```
+
+### Run Server
+
+```sh
+yarn start
+```
+
 ## API Documentation
 
 ### Index
