@@ -1,17 +1,18 @@
 const User = require("./model")
 
 module.exports = {
-  getAll: (req, res, next) => {
+  getAll: async (req, res, next) => {
+    const users = await User.find()
     res.send({
       messages: "Get all users",
-      users: User.find(),
+      users: users,
     })
   },
 
-  getById: (req, res, next) => {
+  getById: async (req, res, next) => {
     const id = Number(req.params.id)
     try {
-      const user = User.findById(id)
+      const user = await User.findById(id)
       if (user) {
         res.send({
           message: "Get user by ID",

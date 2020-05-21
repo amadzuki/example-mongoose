@@ -1,4 +1,4 @@
-# Example Express MVC
+# Example Mongoose with Express MVC
 
 ## Guide
 

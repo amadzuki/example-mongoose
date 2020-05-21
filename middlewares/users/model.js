@@ -1,36 +1,44 @@
-let users = [
-  {
-    id: 1,
-    name: "M Haidar Hanif",
-    username: "mhaidarh",
-    email: "haidar@haidar.com",
-  },
-  {
-    id: 2,
-    name: "Ahmad Marzuki",
-    username: "amadzuki",
-    email: "marzuki@marzuki.com",
-  },
-]
+const mongoose = require("mongoose")
 
-let idCounter = 2
+const environment = require("../../config/env")
 
+mongoose.connect(environment.mongodbURI, { useNewUrlParser: true })
+
+const User = mongoose.model("user", {
+  id: Number,
+  name: String,
+  username: String,
+  email: String,
+})
+
+const userSeed = new User({
+  id: 1,
+  name: "M Haidar Hanif",
+  username: "mhaidarh",
+  email: "haidar@haidar.com",
+})
+
+userSeed.save()
+
+let idCounter = 1
 module.exports = {
   find: () => {
+    const users = User.find({}, (error, user) => {})
     return users
   },
 
   findById: (id) => {
-    const user = users.find((user) => user.id === id)
+    const user = User.findOne({ id: id }, (error, user) => {})
     return user
   },
 
   create: (newUser) => {
     idCounter++
-    const updatedUsers = users.concat({
+    console.log(idCounter)
+    const addUser = new User({
       id: idCounter,
       ...newUser,
     })
-    users = updatedUsers
+    addUser.save().then(() => console.log("Successfully add new user"))
   },
 }
