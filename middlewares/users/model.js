@@ -17,7 +17,7 @@ let idCounter = 2
 
 module.exports = {
   find: () => {
-    return items
+    return users
   },
 
   findById: (id) => {
@@ -27,10 +27,10 @@ module.exports = {
 
   create: (newUser) => {
     idCounter++
-    const updatedUsers = items.concat({
-      ...newUser,
+    const updatedUsers = users.concat({
       id: idCounter,
+      ...newUser,
     })
-    items = updatedUsers
+    users = updatedUsers
   },
 }

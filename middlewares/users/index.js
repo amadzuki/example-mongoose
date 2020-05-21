@@ -1,9 +1,13 @@
-var express = require("express")
-var router = express.Router()
+const express = require("express")
+const router = express.Router()
+
+const users = require("./controller")
 
 /* GET users listing. */
-router.get("/", (req, res, next) => {
-  res.send("respond with a resource")
-})
+router.get("/", users.getAll)
+router.get("/:id", users.getById)
+
+// POST users
+router.post("/", users.postNewUser)
 
 module.exports = router

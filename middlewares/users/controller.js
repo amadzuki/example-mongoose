@@ -10,10 +10,21 @@ module.exports = {
 
   getById: (req, res, next) => {
     const id = Number(req.params.id)
-    res.send({
-      message: "Get user by ID",
-      user: User.findById(id),
-    })
+    try {
+      const user = User.findById(id)
+      if (user) {
+        res.send({
+          message: "Get user by ID",
+          user: user,
+        })
+      } else {
+        res.send({
+          message: "User is not found",
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
   },
 
   postNewUser: (req, res, next) => {
