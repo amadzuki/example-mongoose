@@ -11,16 +11,29 @@ const User = mongoose.model("user", {
   email: String,
 })
 
-const userSeed = new User({
-  id: 1,
-  name: "M Haidar Hanif",
-  username: "mhaidarh",
-  email: "haidar@haidar.com",
-})
+// const userSeed = new User({
+//   id: 1,
+//   name: "M Haidar Hanif",
+//   username: "mhaidarh",
+//   email: "haidar@haidar.com",
+// })
 
-userSeed.save()
+// userSeed.save()
 
-let idCounter = 1
+let idCounter = 0
+
+User.find()
+  .sort({ id: -1 })
+  .limit(1)
+  .exec(function (error, result) {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(result)
+      idCounter = result[0].id
+    }
+  })
+
 module.exports = {
   find: () => {
     const users = User.find({}, (error, user) => {})
