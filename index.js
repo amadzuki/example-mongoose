@@ -8,11 +8,12 @@ var app = require("./app")
 var debug = require("debug")("example-mongoose:server")
 var http = require("http")
 
+const environment = require("./config/env")
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "8000")
+var port = normalizePort(environment.port || "8000")
 app.set("port", port)
 
 /**
