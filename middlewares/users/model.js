@@ -45,7 +45,7 @@ module.exports = {
   },
 
   deleteAll: async () => {
-    let deleteLog = await User.deleteMany({})
+    const deleteLog = await User.deleteMany({})
     return deleteLog
   },
 

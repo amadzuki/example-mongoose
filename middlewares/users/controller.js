@@ -51,12 +51,22 @@ module.exports = {
 
   deleteUserById: async (req, res, next) => {
     const userId = Number(req.params.id)
-    const user = await User.findById(userId)
-    const deleteLog = await User.deleteById(userId)
-    res.send({
-      message: "The following user successfully deleted",
-      user: user,
-      report: deleteLog,
-    })
+    try {
+      const user = await User.findById(userId)
+      if (user) {
+        const deleteLog = await User.deleteById(userId)
+        res.send({
+          message: "The following user successfully deleted",
+          user: user,
+          report: deleteLog,
+        })
+      } else {
+        res.send({
+          message: "User not found!",
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
   },
 }
