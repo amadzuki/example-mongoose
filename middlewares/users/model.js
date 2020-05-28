@@ -11,25 +11,15 @@ const User = mongoose.model("user", {
   email: String,
 })
 
-// const userSeed = new User({
-//   id: 1,
-//   name: "M Haidar Hanif",
-//   username: "mhaidarh",
-//   email: "haidar@haidar.com",
-// })
-
-// userSeed.save()
-
 let idCounter = 0
 
 User.find()
   .sort({ id: -1 })
   .limit(1)
   .exec(function (error, result) {
-    if (error) {
-      console.log(error)
+    if (result.length === 0) {
+      console.log("Creating new collection")
     } else {
-      console.log(result)
       idCounter = result[0].id
     }
   })
@@ -53,5 +43,14 @@ module.exports = {
       ...newUser,
     })
     addUser.save().then(() => console.log("Successfully add new user"))
+  },
+
+  deleteAll: async () => {
+    let deleteLog = {}
+    await User.deleteMany({}, function (error, result) {
+      console.log(error)
+      deleteLog = result
+    })
+    return deleteLog
   },
 }

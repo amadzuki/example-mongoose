@@ -10,4 +10,11 @@ router.get("/", (req, res, next) => {
   })
 })
 
+//GET Hello World message
+router.get("/hello", (req, res, next) => {
+  res.send({
+    message: "Hello World!",
+  })
+})
+
 module.exports = router

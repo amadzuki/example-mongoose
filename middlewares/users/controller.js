@@ -40,4 +40,12 @@ module.exports = {
       newUser: newUser,
     })
   },
+
+  deleteAllUsers: async (req, res, next) => {
+    const report = await User.deleteAll()
+    res.send({
+      message: "All users deleted",
+      report: report,
+    })
+  },
 }
