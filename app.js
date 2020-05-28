@@ -5,6 +5,7 @@ var logger = require("morgan")
 
 var rootMiddleware = require("./middlewares/index")
 var usersMiddleware = require("./middlewares/users")
+var todosMiddleware = require("./middlewares/todos")
 
 var app = express()
 
@@ -16,5 +17,6 @@ app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/", rootMiddleware)
 app.use("/users", usersMiddleware)
+app.use("/todos", todosMiddleware)
 
 module.exports = app

@@ -37,7 +37,6 @@ module.exports = {
 
   create: (newUser) => {
     idCounter++
-    console.log(idCounter)
     const addUser = new User({
       id: idCounter,
       ...newUser,

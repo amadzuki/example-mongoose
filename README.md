@@ -27,7 +27,7 @@ yarn start
 
 | HTTP  | Endpoint | Description              |
 | ----- | -------- | ------------------------ |
-| `GET` | `/`      | Show welcome message     |
+| `GET` | `/`      | Show info message        |
 | `GET` | `/hello` | Show hello world message |
 
 ### Users
