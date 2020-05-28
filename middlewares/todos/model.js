@@ -12,15 +12,15 @@ const Todo = mongoose.model("todo", {
   isDone: Boolean,
 })
 
-let currentId = 2
+let currentId = 1
 // seed
-// const seedTodo = new Todo({
-//   id: 1,
-//   text: "Plan your work for the day",
-//   isFavorited: true,
-//   isDone: false,
-// })
-// seedTodo.save().then(() => {})
+const seedTodo = new Todo({
+  id: 1,
+  text: "Plan your work for the day",
+  isFavorited: true,
+  isDone: false,
+})
+seedTodo.save().then(() => {})
 
 module.exports = {
   getAll: async () => {
@@ -40,5 +40,10 @@ module.exports = {
       ...newTodo,
     })
     todo.save().then(() => {})
+  },
+
+  deleteAll: async () => {
+    const deleteLog = await Todo.deleteMany({})
+    return deleteLog
   },
 }

@@ -10,4 +10,7 @@ router.get("/:id", todos.getById)
 //POST new todo
 router.post("/", todos.addNewTodo)
 
+//DELETE methods
+router.delete("/", todos.deleteAll)
+
 module.exports = router

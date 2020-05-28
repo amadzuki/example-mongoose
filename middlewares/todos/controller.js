@@ -29,17 +29,25 @@ module.exports = {
   },
 
   addNewTodo: (req, res, next) => {
-    const isFavorited = Boolean(Number(req.body.todoIsFavorited))
-    const isDone = Boolean(Number(req.body.todoIsDone))
+    const booleanIsFavorited = Boolean(Number(req.body.todoIsFavorited))
+    const booleanIsDone = Boolean(Number(req.body.todoIsDone))
     const newTodo = {
       text: req.body.todoText,
-      isFavorited: isFavorited,
-      isDone: isDone,
+      isFavorited: booleanIsFavorited,
+      isDone: booleanIsDone,
     }
     Todo.addNewTodo(newTodo)
     res.send({
       message: "Successfully add a new todo",
       todo: newTodo,
+    })
+  },
+
+  deleteAll: async (req, res, next) => {
+    const deleteLog = await Todo.deleteAll()
+    res.send({
+      message: "Successfully delete all todos",
+      report: deleteLog,
     })
   },
 }
