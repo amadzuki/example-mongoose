@@ -8,4 +8,23 @@ module.exports = {
       todos: allTodos,
     })
   },
+
+  getById: async (req, res, next) => {
+    const selectedId = Number(req.params.id)
+    try {
+      const todo = await Todo.findById(selectedId)
+      if (todo) {
+        res.send({
+          message: "Get todo by id",
+          todo: todo,
+        })
+      } else {
+        res.send({
+          message: "Todo is not found",
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
