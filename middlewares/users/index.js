@@ -10,7 +10,8 @@ router.get("/:id", users.getById)
 // POST users
 router.post("/", users.postNewUser)
 
-// DELETE all users
+// DELETE users
 router.delete("/", users.deleteAllUsers)
+router.delete("/:id", users.deleteUserById)
 
 module.exports = router

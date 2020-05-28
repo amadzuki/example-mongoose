@@ -46,11 +46,12 @@ module.exports = {
   },
 
   deleteAll: async () => {
-    let deleteLog = {}
-    await User.deleteMany({}, function (error, result) {
-      console.log(error)
-      deleteLog = result
-    })
+    let deleteLog = await User.deleteMany({})
+    return deleteLog
+  },
+
+  deleteById: async (id) => {
+    const deleteLog = await User.deleteOne({ id: id })
     return deleteLog
   },
 }

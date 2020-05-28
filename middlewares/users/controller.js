@@ -48,4 +48,15 @@ module.exports = {
       report: report,
     })
   },
+
+  deleteUserById: async (req, res, next) => {
+    const userId = Number(req.params.id)
+    const user = await User.findById(userId)
+    const deleteLog = await User.deleteById(userId)
+    res.send({
+      message: "The following user successfully deleted",
+      user: user,
+      report: deleteLog,
+    })
+  },
 }
