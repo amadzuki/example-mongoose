@@ -44,7 +44,7 @@ module.exports = {
     addUser.save().then(() => console.log("Successfully add new user"))
   },
 
-  updateName: async (id, newName) => {
+  updateNameById: async (id, newName) => {
     const updatedUser = await User.findOneAndUpdate(
       { id: id },
       { $set: { name: newName } },

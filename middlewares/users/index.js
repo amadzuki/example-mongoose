@@ -11,7 +11,7 @@ router.get("/:id", users.getById)
 router.post("/", users.postNewUser)
 
 // Update name of user with certain id
-router.put("/:id", users.updateName)
+router.put("/:id", users.updateNameById)
 
 // DELETE users
 router.delete("/", users.deleteAllUsers)

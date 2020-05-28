@@ -41,9 +41,9 @@ module.exports = {
     })
   },
 
-  updateName: async (req, res, next) => {
+  updateNameById: async (req, res, next) => {
     const userId = Number(req.params.id)
-    const updatedUser = await User.updateName(userId, req.body.newName)
+    const updatedUser = await User.updateNameById(userId, req.body.newName)
     res.send({
       message: "Update name success",
       updatedUser: updatedUser,
