@@ -44,6 +44,15 @@ module.exports = {
     addUser.save().then(() => console.log("Successfully add new user"))
   },
 
+  updateName: async (id, newName) => {
+    const updatedUser = await User.findOneAndUpdate(
+      { id: id },
+      { $set: { name: newName } },
+      { new: true }
+    )
+    return updatedUser
+  },
+
   deleteAll: async () => {
     const deleteLog = await User.deleteMany({})
     return deleteLog
