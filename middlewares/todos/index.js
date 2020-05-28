@@ -7,4 +7,7 @@ const todos = require("./controller")
 router.get("/", todos.getAll)
 router.get("/:id", todos.getById)
 
+//POST new todo
+router.post("/", todos.addNewTodo)
+
 module.exports = router

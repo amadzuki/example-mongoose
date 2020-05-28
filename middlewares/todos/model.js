@@ -12,6 +12,7 @@ const Todo = mongoose.model("todo", {
   isDone: Boolean,
 })
 
+let currentId = 2
 // seed
 // const seedTodo = new Todo({
 //   id: 1,
@@ -30,5 +31,14 @@ module.exports = {
   findById: async (id) => {
     const todo = await Todo.findOne({ id: id }, function (error, result) {})
     return todo
+  },
+
+  addNewTodo: (newTodo) => {
+    currentId++
+    const todo = new Todo({
+      id: currentId,
+      ...newTodo,
+    })
+    todo.save().then(() => {})
   },
 }
