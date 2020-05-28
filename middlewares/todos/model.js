@@ -14,13 +14,13 @@ const Todo = mongoose.model("todo", {
 
 let currentId = 1
 // seed
-const seedTodo = new Todo({
-  id: 1,
-  text: "Plan your work for the day",
-  isFavorited: true,
-  isDone: false,
-})
-seedTodo.save().then(() => {})
+// const seedTodo = new Todo({
+//   id: 1,
+//   text: "Plan your work for the day",
+//   isFavorited: true,
+//   isDone: false,
+// })
+// seedTodo.save().then(() => {})
 
 module.exports = {
   getAll: async () => {
@@ -44,6 +44,11 @@ module.exports = {
 
   deleteAll: async () => {
     const deleteLog = await Todo.deleteMany({})
+    return deleteLog
+  },
+
+  deleteById: async (id) => {
+    const deleteLog = await Todo.deleteOne({ id: id })
     return deleteLog
   },
 }

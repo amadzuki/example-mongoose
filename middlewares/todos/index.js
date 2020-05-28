@@ -12,5 +12,6 @@ router.post("/", todos.addNewTodo)
 
 //DELETE methods
 router.delete("/", todos.deleteAll)
+router.delete("/:id", todos.deleteTodoById)
 
 module.exports = router

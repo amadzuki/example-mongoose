@@ -50,4 +50,25 @@ module.exports = {
       report: deleteLog,
     })
   },
+
+  deleteTodoById: async (req, res, next) => {
+    const todoId = Number(req.params.id)
+    try {
+      const todo = await Todo.findById(todoId)
+      if (todo) {
+        const deleteLog = await Todo.deleteById(todoId)
+        res.send({
+          message: "Successfully deleted a record of todo",
+          deletedTodo: todo,
+          report: deleteLog,
+        })
+      } else {
+        res.send({
+          message: "Todo is not found!",
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
