@@ -10,6 +10,9 @@ router.get("/:id", todos.getById)
 //POST new todo
 router.post("/", todos.addNewTodo)
 
+// update todo text
+router.put("/:id", todos.updateTodoText)
+
 //DELETE methods
 router.delete("/", todos.deleteAll)
 router.delete("/:id", todos.deleteTodoById)

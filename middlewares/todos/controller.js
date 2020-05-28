@@ -43,6 +43,15 @@ module.exports = {
     })
   },
 
+  updateTodoText: async (req, res, next) => {
+    const todoId = Number(req.params.id)
+    const updatedTodo = await Todo.updateTodoText(todoId, req.body.newTodoText)
+    res.send({
+      message: "Update todo success",
+      updatedTodo: updatedTodo,
+    })
+  },
+
   deleteAll: async (req, res, next) => {
     const deleteLog = await Todo.deleteAll()
     res.send({

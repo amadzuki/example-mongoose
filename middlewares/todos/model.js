@@ -12,7 +12,7 @@ const Todo = mongoose.model("todo", {
   isDone: Boolean,
 })
 
-let currentId = 1
+let currentId = 2
 // seed
 // const seedTodo = new Todo({
 //   id: 1,
@@ -40,6 +40,15 @@ module.exports = {
       ...newTodo,
     })
     todo.save().then(() => {})
+  },
+
+  updateTodoText: async (id, newTodoText) => {
+    const updatedTodo = await Todo.findOneAndUpdate(
+      { id: id },
+      { $set: { text: newTodoText } },
+      { new: true }
+    )
+    return updatedTodo
   },
 
   deleteAll: async () => {
