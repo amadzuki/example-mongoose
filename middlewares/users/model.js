@@ -1,8 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require('../../config/mongoose')
 
-const environment = require("../../config/env")
-
-mongoose.connect(environment.MONGODB_URL, { useNewUrlParser: true })
 
 const User = mongoose.model("user", {
   id: Number,
